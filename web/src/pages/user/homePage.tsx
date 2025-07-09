@@ -3,6 +3,10 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import FeaturedBlogs from "@/app/components/user/FeaturedBlogs";
 import FeaturedProjects from "@/app/components/user/FeaturedProjects";
+import ClientOnly from "@/app/components/user/ClientOnly";
+
+// Force dynamic rendering to avoid SSR issues with React Query
+export const dynamic = 'force-dynamic';
 
 export default function HomePage() {
   return (
@@ -37,10 +41,14 @@ export default function HomePage() {
       </section>
 
       {/* Featured Blogs */}
-      <FeaturedBlogs />
+      <ClientOnly fallback={<div>Loading...</div>}>
+        <FeaturedBlogs />
+      </ClientOnly>
 
       {/* Featured Projects */}
-      <FeaturedProjects />
+      <ClientOnly fallback={<div>Loading...</div>}>
+        <FeaturedProjects />
+      </ClientOnly>
     </main>
   );
 }

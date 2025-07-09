@@ -2,6 +2,9 @@
 import React, { useState, useMemo } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { FiPlus, FiFilter } from "react-icons/fi";
+
+// Force dynamic rendering to avoid SSR issues
+export const dynamic = 'force-dynamic';
 import {
   ProjectFilters,
   BulkActions,

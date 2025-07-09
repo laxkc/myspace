@@ -15,6 +15,9 @@ import {
 } from "react-icons/fi";
 import toast, { Toaster } from "react-hot-toast";
 
+// Force dynamic rendering to avoid SSR issues
+export const dynamic = 'force-dynamic';
+
 // Contact message interface
 interface ContactMessage {
   id: string;

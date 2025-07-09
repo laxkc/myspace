@@ -27,7 +27,12 @@ import Warning from "@editorjs/warning";
 import Code from "@editorjs/code";
 import Paragraph from "@editorjs/paragraph";
 import { FiX, FiImage } from "react-icons/fi";
-import ImageSearchModal from "./ImageSearchModal";
+import dynamic from "next/dynamic";
+
+// Dynamically import ImageSearchModal to avoid SSR issues
+const ImageSearchModal = dynamic(() => import("./ImageSearchModal"), {
+  ssr: false,
+});
 
 // Type assertions for EditorJS tools
 const MarkerTool = Marker as any;

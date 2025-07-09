@@ -2,14 +2,36 @@
 import React, { useState, useMemo } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { FiPlus, FiFilter } from "react-icons/fi";
-import {
-  BlogFilters,
-  BulkActions,
-  Pagination,
-  DeleteConfirmationModal,
-  BlogForm,
-  BlogsTable,
-} from "@/app/components/admin/blogs";
+import NextDynamic from "next/dynamic";
+
+// Force dynamic rendering to avoid SSR issues
+export const dynamic = 'force-dynamic';
+
+// Dynamically import all components to avoid SSR issues
+const BlogForm = NextDynamic (() => import("@/app/components/admin/blogs/BlogForm"), {
+  ssr: false,
+  loading: () => <div>Loading editor...</div>,
+});
+
+const BlogFilters = NextDynamic(() => import("@/app/components/admin/blogs/BlogFilters"), {
+  ssr: false,
+});
+
+const BulkActions = NextDynamic(() => import("@/app/components/admin/blogs/BulkActions"), {
+  ssr: false,
+});
+
+const Pagination = NextDynamic(() => import("@/app/components/admin/blogs/Pagination"), {
+  ssr: false,
+});
+
+const DeleteConfirmationModal = NextDynamic(() => import("@/app/components/admin/blogs/DeleteConfirmationModal"), {
+  ssr: false,
+});
+
+const BlogsTable = NextDynamic(() => import("@/app/components/admin/blogs/BlogsTable"), {
+  ssr: false,
+});
 import { Blog, BlogFormData } from "@/app/components/admin/blogs/types";
 
 // Mock data for blogs
