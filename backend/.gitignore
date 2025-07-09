@@ -13,3 +13,17 @@ yarn-error.log*
 
 # dist
 dist
+
+
+# scripts
+scripts
+
+# migrations
+migrations
+
+
+# error logs
+error.log
+
+# conbined logs
+combined.log
