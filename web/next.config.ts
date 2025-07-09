@@ -1,10 +1,6 @@
 import type { NextConfig } from "next";
 
-const backendBaseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3009";
-
-if (!backendBaseUrl) {
-  throw new Error("NEXT_PUBLIC_API_URL is not defined in .env.local");
-}
+const backendBaseUrl = process.env.NEXT_PUBLIC_API_URL?.replace('http://', 'https://') || "https://myspacebackend.us-east-1.elasticbeanstalk.com";
 
 const nextConfig: NextConfig = {
   images: {
