@@ -1,7 +1,12 @@
 import type { NextConfig } from "next";
 
+const backendBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+
+if (!backendBaseUrl) {
+  throw new Error("NEXT_PUBLIC_API_BASE_URL is not defined in .env.local");
+}
+
 const nextConfig: NextConfig = {
-  /* config options here */
   images: {
     remotePatterns: [
       {
@@ -11,8 +16,15 @@ const nextConfig: NextConfig = {
     ],
   },
   eslint: {
-    // Warning during builds, error during development
     ignoreDuringBuilds: true,
+  },
+  async rewrites() {
+    return [
+      {
+        source: "/api/:path*",
+        destination: `${backendBaseUrl}/:path*`,
+      },
+    ];
   },
 };
 
