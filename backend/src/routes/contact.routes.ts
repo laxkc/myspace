@@ -3,7 +3,7 @@ import * as ContactController from "../controllers/contact.controller";
 
 const router = Router();
 
-// Create contact
+    // Create contact
 router.post("/", ContactController.createContact);
 
 // Get all contacts
