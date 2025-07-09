@@ -1,5 +1,5 @@
 import { Router } from "express";
-import * as ProjectTagController from "../controllers/projectTag.controller.ts";
+import * as ProjectTagController from "../controllers/projectTag.controller";
 
 const router = Router();
 

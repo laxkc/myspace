@@ -1,5 +1,5 @@
 import express from "express";
-import * as ProjectTagService from "../services/projectTag.service.ts";
+import * as ProjectTagService from "../services/projectTag.service";
 
 type Request = express.Request;
 type Response = express.Response;

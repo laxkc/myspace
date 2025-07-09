@@ -1,6 +1,6 @@
 import express from "express";
-import * as BlogService from "../services/blog.service.ts";
-import * as BlogTagService from "../services/blogTag.service.ts";
+import * as BlogService from "../services/blog.service";
+import * as BlogTagService from "../services/blogTag.service";
 
 type Request = express.Request;
 type Response = express.Response;

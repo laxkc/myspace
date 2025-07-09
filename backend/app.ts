@@ -1,12 +1,12 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import { pool } from "./src/utils/database.ts";
-import logger from "./src/utils/logger.ts";
-import rootRoutes from "./src/routes/root.ts";
+import { pool } from "./src/utils/database";
+import logger from "./src/utils/logger";
+import rootRoutes from "./src/routes/root";
 import cookieParser from "cookie-parser";
-import { rateLimitMiddleware } from "./src/middlewares/ratelimit.middleware.ts";
-import { apiKeyMiddleware } from "./src/middlewares/apikey.middleware.ts";
+import { rateLimitMiddleware } from "./src/middlewares/rateLimit.middleware";
+import { apiKeyMiddleware } from "./src/middlewares/apikey.middleware";
 
 // Load environment variables
 dotenv.config();
@@ -15,7 +15,7 @@ dotenv.config();
 const app = express();
 
 // Test database connection
-pool.query("SELECT NOW()", (err, res) => {
+pool.query("SELECT NOW()", (err) => {
   if (err) {
     logger.error("Error connecting to the database", err);
   } else {
@@ -29,7 +29,7 @@ app.use(rateLimitMiddleware);
 // CORS
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:3000",
+    origin: "*",
     credentials: true,
   })
 );
@@ -48,5 +48,13 @@ app.get("/", (req, res) => {
 
 // Root routes
 app.use("/api", apiKeyMiddleware, rootRoutes);
+
+// API for health check
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    status: "OK",
+    timestamp: new Date().toISOString(),
+  });
+});
 
 export default app;

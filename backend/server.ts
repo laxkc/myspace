@@ -1,5 +1,5 @@
-import app from "./app.ts";
-import logger from "./src/utils/logger.ts";
+import app from "./app";
+import logger from "./src/utils/logger";
 
 const PORT = process.env.PORT || 3009;
 

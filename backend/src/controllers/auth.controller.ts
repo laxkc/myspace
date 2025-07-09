@@ -1,8 +1,8 @@
 import type { Request, Response } from "express";
-import { validateEmail } from "../utils/validateEmail.ts";
-import { hashPassword, comparePassword } from "../utils/encrypt.ts";
-import { signInAccessToken, signInRefreshToken } from "../utils/jwt.ts";
-import { getAdminByEmail } from "../models/admin.model.ts";
+import { validateEmail } from "../utils/validateEmail";
+import { hashPassword, comparePassword } from "../utils/encrypt";
+import { signInAccessToken, signInRefreshToken } from "../utils/jwt";
+import { getAdminByEmail } from "../models/admin.model";
 
 type SignInRequest = Request & {
   body: {

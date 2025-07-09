@@ -1,6 +1,6 @@
-import * as TagService from "./tag.service.ts";
-import * as BlogModel from "../models/blog.model.ts";
-import * as BlogTagModel from "../models/blogTag.model.ts";
+import * as TagService from "./tag.service";
+import * as BlogModel from "../models/blog.model";
+import * as BlogTagModel from "../models/blogTag.model";
 
 // Get all blog with tags
 export const getAllBlogsWithTags = async () => {

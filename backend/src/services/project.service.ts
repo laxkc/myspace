@@ -1,7 +1,7 @@
-import * as ProjectModel from "../models/project.model.ts";
+import * as ProjectModel from "../models/project.model";
 import slugify from "slugify";
-import * as ProjectTagModel from "../models/projectTag.model.ts";
-import * as TagService from "./tag.service.ts";
+import * as ProjectTagModel from "../models/projectTag.model";
+import * as TagService from "./tag.service";
 
 // Create project
 export const createProject = async (projectData: any) => {

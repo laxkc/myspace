@@ -1,5 +1,5 @@
 import express from "express";
-import * as AdminService from "../services/admin.service.ts";
+import * as AdminService from "../services/admin.service";
 
 type Request = express.Request;
 type Response = express.Response;

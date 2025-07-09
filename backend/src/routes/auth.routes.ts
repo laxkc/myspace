@@ -1,6 +1,6 @@
 import {Router } from "express";
 import type { RequestHandler } from "express";
-import { signIn, signOut } from "../controllers/auth.controller.ts";
+import { signIn, signOut } from "../controllers/auth.controller";
 
 const router = Router();
 

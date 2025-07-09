@@ -1,4 +1,4 @@
-import { pool } from "../utils/database.ts";
+import { pool } from "../utils/database";
 
 // Interface for tag
 export interface Tag {

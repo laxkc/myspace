@@ -1,5 +1,5 @@
 import express from "express";
-import * as ContactService from "../services/contact.service.ts";
+import * as ContactService from "../services/contact.service";
 
 type Request = express.Request;
 type Response = express.Response;

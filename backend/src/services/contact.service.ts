@@ -1,4 +1,4 @@
-import * as ContactModel from "../models/contact.model.ts";
+import * as ContactModel from "../models/contact.model";
 
 // Create contact
 export const createContact = async (contact: ContactModel.Contact) => {

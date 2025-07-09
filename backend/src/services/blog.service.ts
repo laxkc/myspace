@@ -1,7 +1,7 @@
-import * as BlogModel from "../models/blog.model.ts";
+import * as BlogModel from "../models/blog.model";
 import slugify from "slugify";
-import * as BlogTagModel from "../models/blogTag.model.ts";
-import * as TagService from "./tag.service.ts";
+import * as BlogTagModel from "../models/blogTag.model";
+import * as TagService from "./tag.service";
 
 // Create blog
 export const createBlog = async (blogData: any) => {

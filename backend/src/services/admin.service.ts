@@ -1,5 +1,5 @@
-import * as AdminModel from "../models/admin.model.ts";
-import { validateEmail } from "../utils/validateEmail.ts";
+import * as AdminModel from "../models/admin.model";
+import { validateEmail } from "../utils/validateEmail";
 
 // Create admin
 export const createAdmin = async (admin: AdminModel.Admin) => {

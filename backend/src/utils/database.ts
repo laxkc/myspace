@@ -1,5 +1,5 @@
 import pg from "pg";
-import { dbConfig } from "../configs/db.ts";
+import { dbConfig } from "../configs/db";
 
 const { Pool } = pg;
 
@@ -12,5 +12,5 @@ const pool = new Pool({
     rejectUnauthorized: false,
   },
 });
-
+  
 export { pool };

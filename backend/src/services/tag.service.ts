@@ -1,4 +1,4 @@
-import * as TagModel from "../models/tag.model.ts";
+import * as TagModel from "../models/tag.model";
 import slugify from "slugify";
 import { v4 as uuidv4 } from "uuid";
 

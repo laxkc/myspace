@@ -1,6 +1,6 @@
-import * as ProjectTagModel from "../models/projectTag.model.ts";
+import * as ProjectTagModel from "../models/projectTag.model";
 
-// Create project tag
+// Create project tag 
 export const createProjectTag = async (projectTag: ProjectTagModel.ProjectTag) => {
   try {
     const newProjectTag = await ProjectTagModel.insertProjectTag(projectTag);

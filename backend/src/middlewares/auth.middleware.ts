@@ -1,5 +1,5 @@
 import type { Request, Response } from "express";
-import { verifyAccessToken, verifyRefreshToken } from "../utils/jwt.ts";
+import { verifyAccessToken, verifyRefreshToken } from "../utils/jwt";
 
 // Interface for request with user
 interface RequestWithUser extends Request {

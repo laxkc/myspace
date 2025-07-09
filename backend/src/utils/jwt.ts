@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import { jwtConfig } from "../configs/jwt.config.ts";
+import { jwtConfig } from "../configs/jwt.config";
 
 // Interface for decoded token
 interface DecodedToken {
