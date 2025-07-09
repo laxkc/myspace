@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Create axios instance with default config
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL?.replace('http://', 'https://') || 'https://myspacebackend.us-east-1.elasticbeanstalk.com',
+  baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://myspacebackend.us-east-1.elasticbeanstalk.com',
   headers: {
     "Content-Type": "application/json",
   },
