@@ -16,33 +16,14 @@ A robust REST API built with Node.js, Express, and PostgreSQL, hosted on AWS RDS
 npm install
 ```
 
-### Environment Setup
-
-Copy `.env.example` to `.env` and configure your database credentials:
-
-```bash
-cp .env.example .env
-```
-
-### Database Setup (One Command)
-
-```bash
-./scripts/setup-db.sh
-```
-
-This script will:
-
-- Create the database if it doesn't exist
-- Run the schema to create all tables
-- Verify the setup
 
 ## 📊 Database Connection
 
 ### AWS RDS Details
 
-- **Host:** `myspace.c5m2kawe8zek.us-east-1.rds.amazonaws.com`
-- **Port:** `5432`
-- **Database:** `myspace`
+- **Host:** ``
+- **Port:** ``
+- **Database:** ``
 - **SSL:** Required
 
 ## 🗄️ Database Schema
@@ -88,11 +69,6 @@ npm start
 
 AWS RDS requires SSL connections. Always use `sslmode=require` in connection strings.
 
-### Environment Variables
-
-- Never commit `.env` files to version control
-- Use strong, unique passwords
-- Rotate secrets regularly
 
 ### AWS RDS Security
 
@@ -161,17 +137,6 @@ psql "postgresql://..." -c "\l"
 # Check connection
 psql "postgresql://..." -c "SELECT version();"
 ```
-
-#### SSL Connection Error
-
-- Ensure `sslmode=require` is in connection string
-- Check AWS RDS SSL settings
-
-#### Permission Denied 
-
-- Verify username/password
-- Check AWS Security Group settings
-- Ensure IP is whitelisted
 
 ### Logs
 
