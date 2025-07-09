@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Create axios instance with default config
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://myspacebackend.us-east-1.elasticbeanstalk.com',
+  baseURL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:3009", // Direct backend in development
   headers: {
     "Content-Type": "application/json",
   },
@@ -15,7 +15,7 @@ api.interceptors.response.use(
     return response;
   },
   (error) => {
-    console.error('API Error:', {
+    console.error("API Error:", {
       status: error.response?.status,
       statusText: error.response?.statusText,
       data: error.response?.data,
