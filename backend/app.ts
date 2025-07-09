@@ -34,7 +34,6 @@ app.use(
   })
 );
 
-
 // Parse cookies
 app.use(cookieParser());
 
@@ -47,7 +46,7 @@ app.get("/", (req, res) => {
 });
 
 // Root routes
-app.use("/api", apiKeyMiddleware, rootRoutes);
+app.use("/api", rootRoutes);
 
 // API for health check
 app.get("/health", (req, res) => {
