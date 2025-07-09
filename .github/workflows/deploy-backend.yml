@@ -85,8 +85,7 @@ jobs:
       run: |
         eb init ${{ env.EB_APPLICATION_NAME }} \
           --region ${{ env.AWS_REGION }} \
-          --platform "Node.js 18" \
-          --interactive false
+          --platform "Node.js 18"
 
     - name: Deploy to Elastic Beanstalk
       run: |
