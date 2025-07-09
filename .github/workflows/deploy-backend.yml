@@ -5,10 +5,12 @@ on:
     branches: [ main, master ]
     paths:
       - 'backend/**'
+      - '.github/workflows/**'
   pull_request:
     branches: [ main, master ]
     paths:
       - 'backend/**'
+      - '.github/workflows/**'
 
 env:
   AWS_REGION: us-east-1
