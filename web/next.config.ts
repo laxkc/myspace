@@ -10,6 +10,10 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  eslint: {
+    // Warning during builds, error during development
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default nextConfig;

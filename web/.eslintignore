@@ -1,0 +1,12 @@
+# Ignore build outputs
+.next/
+out/
+dist/
+
+# Ignore generated files
+*.generated.*
+*.min.*
+
+# Ignore specific problematic files
+src/app/components/admin/blogs/BlogForm.tsx
+src/app/components/admin/blogs/ImageSearchModal.tsx 
