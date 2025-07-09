@@ -15,7 +15,7 @@ on:
 env:
   AWS_REGION: us-east-1
   EB_APPLICATION_NAME: myspace-backend
-  EB_ENVIRONMENT_NAME: myspace-backend-prod
+  EB_ENVIRONMENT_NAME: Myspacebackend-env
 
 jobs:
   test:
