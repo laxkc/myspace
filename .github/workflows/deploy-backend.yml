@@ -14,7 +14,7 @@ on:
 
 env:
   AWS_REGION: us-east-1
-  EB_APPLICATION_NAME: myspace-backend
+  EB_APPLICATION_NAME: myspace_backend
   EB_ENVIRONMENT_NAME: Myspacebackend-env
 
 jobs:
@@ -39,6 +39,7 @@ jobs:
     - name: Install dependencies
       run: npm ci
 
+    # Optional: Lint and test
     # - name: Run linting
     #   run: npm run lint || echo "No lint script found"
 
@@ -81,15 +82,16 @@ jobs:
     - name: Install EB CLI
       run: pip install awsebcli
 
-    - name: Initialize EB CLI
+    - name: Clean and initialize EB CLI
       run: |
+        rm -rf .elasticbeanstalk
         eb init ${{ env.EB_APPLICATION_NAME }} \
           --region ${{ env.AWS_REGION }} \
           --platform "Node.js 18"
 
     - name: Deploy to Elastic Beanstalk
       run: |
-        eb deploy ${{ env.EB_ENVIRONMENT_NAME }} 
+        eb deploy ${{ env.EB_ENVIRONMENT_NAME }}
 
     - name: Health check
       run: |
