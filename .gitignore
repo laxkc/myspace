@@ -1,0 +1,25 @@
+# GitHub Actions Runner
+actions-runner/
+
+# Node modules
+node_modules/
+
+# Environment files
+.env*
+
+# Logs
+*.log
+
+# Build outputs
+dist/
+build/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo 
