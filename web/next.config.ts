@@ -1,9 +1,9 @@
 import type { NextConfig } from "next";
 
-const backendBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+const backendBaseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3009";
 
 if (!backendBaseUrl) {
-  throw new Error("NEXT_PUBLIC_API_BASE_URL is not defined in .env.local");
+  throw new Error("NEXT_PUBLIC_API_URL is not defined in .env.local");
 }
 
 const nextConfig: NextConfig = {
