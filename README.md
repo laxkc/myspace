@@ -13,7 +13,6 @@ A modern full-stack project with a **TypeScript Node.js backend** (Express, Post
 - [Scripts](#scripts)
 - [Tech Stack](#tech-stack)
 - [Contributing](#contributing)
-- [License](#license)
 
 ---
 
