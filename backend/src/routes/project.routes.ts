@@ -1,10 +1,11 @@
 import { Router } from "express";
 import * as ProjectController from "../controllers/project.controller";
+import { apiKeyMiddleware } from "../middlewares/apikey.middleware";
 
 const router = Router();
 
 // Create project
-router.post("/", ProjectController.createProject);
+router.post("/", apiKeyMiddleware, ProjectController.createProject);
 
 // Get all projects
 router.get("/", ProjectController.getAllProjects);
@@ -12,18 +13,16 @@ router.get("/", ProjectController.getAllProjects);
 // Get featured projects latest 3
 router.get("/featured", ProjectController.getFeaturedProjects);
 
-
 // Get project by id
 router.get("/:id", ProjectController.getProjectById);
 
-// Get project by slug  
+// Get project by slug
 router.get("/slug/:slug", ProjectController.getProjectBySlug);
 
 // Update project
-router.put("/:id", ProjectController.updateProject);
+router.put("/:id", apiKeyMiddleware, ProjectController.updateProject);
 
 // Delete project
-router.delete("/:id", ProjectController.deleteProject); 
-
+router.delete("/:id", apiKeyMiddleware, ProjectController.deleteProject);
 
 export default router;

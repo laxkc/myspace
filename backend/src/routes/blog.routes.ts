@@ -1,10 +1,12 @@
 import { Router } from "express";
 import * as BlogController from "../controllers/blog.controller";
+import { apiKeyMiddleware } from "../middlewares/apikey.middleware";
+
 
 const router = Router();
 
 // Create blog
-router.post("/", BlogController.createBlog);
+router.post("/", apiKeyMiddleware, BlogController.createBlog);
 
 // Get all blogs
 router.get("/", BlogController.getAllBlogs);
@@ -31,10 +33,10 @@ router.get("/slug/:slug", BlogController.getBlogBySlug);
 // router.get("/:id/with-tags", BlogController.getBlogByIdWithTags);
 
 // Update blog
-router.put("/:id", BlogController.updateBlog);
+router.put("/:id", apiKeyMiddleware, BlogController.updateBlog);
 
 // Delete blog
-router.delete("/:id", BlogController.deleteBlog);
+router.delete("/:id", apiKeyMiddleware, BlogController.deleteBlog);
 
 // Get featured blogs latest 3
 router.get("/featured", BlogController.getFeaturedBlogs);

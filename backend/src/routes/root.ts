@@ -6,6 +6,7 @@ import contactRoutes from "./contact.routes";
 import projectTagRoutes from "./projectTag.routes";
 import authRoutes from "./auth.routes";
 import { authenticateUser } from "../middlewares/auth.middleware";
+import { apiKeyMiddleware } from "../middlewares/apikey.middleware";
 
 const router = Router();
 
@@ -15,7 +16,7 @@ router.get("/health", (req, res) => {
     status: "OK",
     timestamp: new Date().toISOString(),
     uptime: process.uptime(),
-    environment: process.env.NODE_ENV || "development"
+    environment: process.env.NODE_ENV || "development",
   });
 });
 
@@ -26,15 +27,15 @@ router.use("/blog", blogRoutes);
 router.use("/project", projectRoutes);
 
 // Admin routes
-router.use("/admin", adminRoutes);
+router.use("/admin", apiKeyMiddleware, adminRoutes);
 
 // Contact routes
-router.use("/contact", contactRoutes);
+router.use("/contact", apiKeyMiddleware, contactRoutes);
 
 // Project tag routes
-router.use("/project-tag", projectTagRoutes);
+router.use("/project-tag", apiKeyMiddleware, projectTagRoutes);
 
 // Auth routes
-router.use("/auth", authRoutes);
+router.use("/auth", apiKeyMiddleware, authRoutes);
 
 export default router;
