@@ -110,8 +110,6 @@ NEXT_PUBLIC_API_KEY=your_api_key
 - `npm run dev` — Start backend in dev mode (nodemon)
 - `npm run build` — Build TypeScript
 - `npm run start` — Start production server
-- `npm run db:init` — Initialize DB schema
-- `npm run db:seed` — Seed DB with sample data
 
 **Frontend:**
 
@@ -138,6 +136,4 @@ NEXT_PUBLIC_API_KEY=your_api_key
 
 ---
 
-## License
 
-MIT
