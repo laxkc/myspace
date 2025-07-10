@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const BACKEND_URL = "http://myspacebackend.us-east-1.elasticbeanstalk.com";
+const BACKEND_URL = "https://myspaceapi.codebylax.me/api";
 
 export async function GET(
   request: NextRequest,
