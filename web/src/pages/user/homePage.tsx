@@ -41,12 +41,12 @@ export default function HomePage() {
       </section>
 
       {/* Featured Blogs */}
-      <ClientOnly fallback={<div>Loading...</div>}>
+      <ClientOnly >
         <FeaturedBlogs />
       </ClientOnly>
 
       {/* Featured Projects */}
-      <ClientOnly fallback={<div>Loading...</div>}>
+      <ClientOnly>
         <FeaturedProjects />
       </ClientOnly>
     </main>
