@@ -3,17 +3,16 @@ import { pool } from "../utils/database";
 // Interface for admin
 export interface Admin {
   id: string;
-  name: string;
   email: string;
   password: string;
-  createdAt: Date;
+  created_at: Date;
 }
 
 // Insert admin
 export const insertAdmin = async (admin: Admin) => {
-  const { name, email, password } = admin;
-  const query = `INSERT INTO admin (name, email, password) VALUES ($1, $2, $3) RETURNING *`;
-  const values = [name, email, password];
+  const { email, password } = admin;
+  const query = `INSERT INTO admin (email, password) VALUES ($1, $2) RETURNING *`;
+  const values = [email, password];
   const result = await pool.query(query, values);
   return result.rows[0];
 };
@@ -34,17 +33,23 @@ export const getAdminByEmail = async (email: string) => {
 
 // Update admin
 export const updateAdmin = async (admin: Admin) => {
-  const { id, name, email, password } = admin;
-  const query = `UPDATE admin SET name = $2, email = $3, password = $4 WHERE id = $1 RETURNING *`;
-  const values = [id, name, email, password];
+  const { id, email, password } = admin;
+  const query = `UPDATE admin SET email = $2, password = $3 WHERE id = $1 RETURNING *`;
+  const values = [id, email, password];
   const result = await pool.query(query, values);
   return result.rows[0];
 };
-
 
 // Delete admin
 export const deleteAdmin = async (id: string) => {
   const query = `DELETE FROM admin WHERE id = $1`;
   const result = await pool.query(query, [id]);
   return result.rowCount;
+};
+
+// Forgot password
+export const forgotPassword = async (email: string, newPassword: string) => {
+  const query = `UPDATE admin SET password = $2 WHERE email = $1 RETURNING *`;
+  const result = await pool.query(query, [email, newPassword]);
+  return result.rows[0];
 };

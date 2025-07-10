@@ -3,6 +3,12 @@ import slugify from "slugify";
 import * as ProjectTagModel from "../models/projectTag.model";
 import * as TagService from "./tag.service";
 
+// add random id to project title if title is already exists
+const addRandomIdToTitle = (title: string) => {
+  const randomId = Math.random().toString(36).substring(2, 15);
+  return `${title} ${randomId}`;
+};
+
 // Create project
 export const createProject = async (projectData: any) => {
   try {
@@ -37,10 +43,14 @@ export const createProject = async (projectData: any) => {
       tags: projectData.tags || [],
     };
 
-    const slug = slugify(project.title, { lower: true, strict: true });
-    const existingProject = await ProjectModel.getProjectBySlug(slug);
-    if (existingProject) {
-      throw new Error("Project with this title already exists");
+    let slug = slugify(project.title, { lower: true, strict: true });
+    let existingProject = await ProjectModel.getProjectBySlug(slug);
+    
+    // Keep generating new slugs until we find a unique one
+    while (existingProject) {
+      project.title = addRandomIdToTitle(project.title);
+      slug = slugify(project.title, { lower: true, strict: true });
+      existingProject = await ProjectModel.getProjectBySlug(slug);
     }
 
     // Create the project first

@@ -2,16 +2,16 @@ import { pool } from "../utils/database";
 
 // Interface for tag
 export interface Tag {
-  id: string;
+  id?: number;
   title: string;
   slug: string;
 }
 
 // Insert tag
 export const insertTag = async (tag: Tag) => {
-  const { id, title, slug } = tag;
-  const query = `INSERT INTO tags (id, title, slug) VALUES ($1, $2, $3) RETURNING *`;
-  const values = [id, title, slug];
+  const { title, slug } = tag;
+  const query = `INSERT INTO tags (title, slug) VALUES ($1, $2) RETURNING *`;
+  const values = [title, slug];
   const result = await pool.query(query, values);
   return result.rows[0];
 };
@@ -24,7 +24,7 @@ export const getAllTags = async () => {
 };
 
 // Get tag by id
-export const getTagById = async (id: string) => {
+export const getTagById = async (id: number) => {
   const query = `SELECT * FROM tags WHERE id = $1`;
   const result = await pool.query(query, [id]);
   return result.rows[0];
@@ -47,7 +47,7 @@ export const updateTag = async (tag: Tag) => {
 };
 
 // Delete tag
-export const deleteTag = async (id: string) => {
+export const deleteTag = async (id: number) => {
   const query = `DELETE FROM tags WHERE id = $1 RETURNING *`;
   const result = await pool.query(query, [id]);
   return result.rows[0];

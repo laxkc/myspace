@@ -1,6 +1,6 @@
 import type { Request, Response } from "express";
 import { validateEmail } from "../utils/validateEmail";
-import { hashPassword, comparePassword } from "../utils/encrypt";
+import { comparePassword } from "../utils/encrypt";
 import { signInAccessToken, signInRefreshToken } from "../utils/jwt";
 import { getAdminByEmail } from "../models/admin.model";
 

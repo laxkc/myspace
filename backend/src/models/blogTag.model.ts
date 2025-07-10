@@ -3,7 +3,7 @@ import { pool } from "../utils/database";
 // Interface for blog tag
 export interface BlogTag {
   blogId: string;
-  tagId: string;
+  tagId: number;
 }
 
 // Insert blog tag
@@ -23,14 +23,14 @@ export const getBlogTagsByBlogId = async (blogId: string) => {
 };
 
 // Get blog tags by tag id
-export const getBlogTagsByTagId = async (tagId: string) => {
+export const getBlogTagsByTagId = async (tagId: number) => {
   const query = `SELECT * FROM blog_tags WHERE tag_id = $1`;
   const result = await pool.query(query, [tagId]);
   return result.rows;
 };
 
 // Delete blog tag
-export const deleteBlogTag = async (blogId: string, tagId: string) => {
+export const deleteBlogTag = async (blogId: string, tagId: number) => {
   const query = `DELETE FROM blog_tags WHERE blog_id = $1 AND tag_id = $2`;
   const result = await pool.query(query, [blogId, tagId]);
   return result.rowCount;

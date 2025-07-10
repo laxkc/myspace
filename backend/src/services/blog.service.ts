@@ -3,6 +3,13 @@ import slugify from "slugify";
 import * as BlogTagModel from "../models/blogTag.model";
 import * as TagService from "./tag.service";
 
+
+// add random id to blot title if title is already exists
+const addRandomIdToTitle = (title: string) => {
+  const randomId = Math.random().toString(36).substring(2, 15);
+  return `${title} ${randomId}`;
+};
+
 // Create blog
 export const createBlog = async (blogData: any) => {
   try {
@@ -28,10 +35,14 @@ export const createBlog = async (blogData: any) => {
       tags: blogData.tags || [],
     };
 
-    const slug = slugify(blog.title, { lower: true, strict: true });
-    const existingBlog = await BlogModel.getBlogBySlug(slug);
-    if (existingBlog) {
-      throw new Error("Blog with this title already exists");
+    let slug = slugify(blog.title, { lower: true, strict: true });
+    let existingBlog = await BlogModel.getBlogBySlug(slug);
+    
+    // Keep generating new slugs until we find a unique one
+    while (existingBlog) {
+      blog.title = addRandomIdToTitle(blog.title);
+      slug = slugify(blog.title, { lower: true, strict: true });
+      existingBlog = await BlogModel.getBlogBySlug(slug);
     }
 
     // Create the blog first
@@ -61,6 +72,7 @@ export const createBlog = async (blogData: any) => {
       tags,
     };
   } catch (error) {
+    console.error("Create blog error:", error);
     throw new Error("Failed to create blog");
   }
 };
@@ -82,6 +94,7 @@ export const getAllBlogs = async () => {
     );
     return blogsWithTags;
   } catch (error) {
+    console.error("Get all blogs error:", error);
     throw new Error("Failed to get all blogs");
   }
 };

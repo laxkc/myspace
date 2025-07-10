@@ -1,10 +1,9 @@
 import * as TagModel from "../models/tag.model";
 import slugify from "slugify";
-import { v4 as uuidv4 } from "uuid";
 
 // Interface for tag
 export interface Tag {
-  id: string;
+  id?: number;
   title: string;
   slug: string;
 }
@@ -18,7 +17,6 @@ export const createTag = async (tag: { title: string }) => {
       return existingTag; // Return existing tag if it already exists
     }
     const newTag = await TagModel.insertTag({
-      id: uuidv4(),
       title: tag.title,
       slug,
     });
@@ -38,7 +36,7 @@ export const getAllTags = async () => {
 };
 
 // Get tag by id
-export const getTagById = async (id: string) => {
+export const getTagById = async (id: number) => {
   try {
     return await TagModel.getTagById(id);
   } catch (error) {
@@ -79,7 +77,7 @@ export const updateTag = async (tag: Tag) => {
 };
 
 // Delete tag
-export const deleteTag = async (id: string) => {
+export const deleteTag = async (id: number) => {
   try {
     return await TagModel.deleteTag(id);
   } catch (error) {

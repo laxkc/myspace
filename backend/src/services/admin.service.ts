@@ -53,3 +53,25 @@ export const deleteAdmin = async (id: string) => {
     throw new Error("Failed to delete admin");
   }
 };
+
+
+// Forgot password
+export const forgotPassword = async (email: string, newPassword: string) => {
+  try {
+    // Validate inputs
+    if (!email || !newPassword) {
+      throw new Error("Email and newPassword are required");
+    }
+    
+    // Check if admin exists
+    const existingAdmin = await AdminModel.getAdminByEmail(email);
+    if (!existingAdmin) {
+      throw new Error("Admin with this email does not exist");
+    }
+    
+    return await AdminModel.forgotPassword(email, newPassword);
+  } catch (error) {
+    console.error("Forgot password error:", error);
+    throw new Error(`Failed to forgot password: ${error instanceof Error ? error.message : 'Unknown error'}`);
+  }
+};

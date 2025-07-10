@@ -31,3 +31,7 @@ combined.log
 # GitHub Actions Runner
 actions-runner/
 
+
+
+# tsconfig 
+tsconfig_d.json
