@@ -1,6 +1,6 @@
 # Backend API - Node.js/Express/PostgreSQL
 
-A robust REST API built with Node.js, Express, and PostgreSQL, hosted on AWS RDS.
+A robust REST API built with Node.js, Express, and PostgreSQL, hosted on AWS RDS and AWS Elastic Beanstalk.
 
 ## 🚀 Quick Start
 
@@ -62,13 +62,6 @@ npm run dev
 npm run build
 npm start
 ```
-
-## 🔐 Security
-
-### SSL Connection
-
-AWS RDS requires SSL connections. Always use `sslmode=require` in connection strings.
-
 
 ### AWS RDS Security
 
@@ -148,6 +141,3 @@ tail -f combined.log
 tail -f error.log
 ```
 
-## 📝 License
-
-MIT License - see LICENSE file for details.
