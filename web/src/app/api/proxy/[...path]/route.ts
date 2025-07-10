@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const BACKEND_URL = "https://myspaceapi.codebylax.me/api";
+const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export async function GET(
   request: NextRequest,
