@@ -16,6 +16,7 @@ A modern full-stack project with a **TypeScript Node.js backend** (Express, Post
 
 ---
 
+
 ## Project Structure
 
 ```
@@ -56,6 +57,10 @@ npm run dev
 ```
 
 - API runs on [http://localhost:5000](http://localhost:5000) by default.
+
+- API Endpoints
+
+  <img width="1767" height="1024" alt="Screenshot 2025-07-14 at 3 30 12 PM" src="https://github.com/user-attachments/assets/eb870546-9910-40fe-addd-0b4cb8742e1f" />
 
 ---
 
